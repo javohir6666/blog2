@@ -1,0 +1,39 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block content %}
+<div class="container-fluid py-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex align-items-center justify-content-between bg-light py-2 px-4 mb-3">
+                <h3 class="m-0">Qidiruv: {{request.GET.query}}</h3>
+            </div>
+        </div>
+        <div class="col-lg">
+            <div class="container">
+                {% if news_list %}
+                    {% for news in news_list %}
+                    <div class="d-flex mb-3">
+                        {% if news.image %}
+                        <img src="{{news.image.url}}" style="width: 100px; height: 100px; object-fit: cover;" alt="{{news.title}}">
+                        {% endif %}
+                        <div class="w-100 d-flex flex-column justify-content-center bg-light px-3" style="height: 100px;">
+                            <div class="mb-1" style="font-size: 13px;">
+                                <a href="">{{news.category.title}}</a>
+                                <span class="px-1">/</span>
+                                <span>{{news.add_time}}</span>
+                            </div>
+                            <a class="h6 m-0" href="">{{news.title}}</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                {% else %}
+                        <h2>Hech nima topilmadi :(</h2>
+                {% endif %}
+
+        </div>
+
+    </div>
+
+    </div>
+</div>
+{% endblock content %}
